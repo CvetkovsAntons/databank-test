@@ -37,12 +37,7 @@ class NumberArray
 
 				return true;
 		}
-
-		public function getArray() : array // function that returns an original array
-		{
-				return $this->array;
-		}
-
+		
 		public function getPrimeNumbers() : array // function that returns an array of prime numbers
 		{
 				return $this->primeNumbers;
