@@ -2,9 +2,9 @@
 // UserInput class is controlling user input logic
 class UserInput
 {
-		public function inputN() : int // function for N (original array length) input
+		public static function inputN() : int // function for N (original array length) input
 		{
-				echo "Enter the length of array (must be integer > 2): ";
+				echo "Enter the length of array (must be integer >= 2): ";
 				$input = fgets(STDIN);
 
 				while (!filter_var($input, FILTER_VALIDATE_INT) || (int)$input < 2)
@@ -18,7 +18,7 @@ class UserInput
 				return (int)$input;
 		}
 
-		public function inputK() : int // function for K (password length) input
+		public static function inputK() : int // function for K (password length) input
 		{
 				echo "Enter the length of a password (must be integer >= 3): ";
 				$input = fgets(STDIN);

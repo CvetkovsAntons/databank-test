@@ -4,12 +4,14 @@ class NumberArray
 {
 		private array $array;
 		private array $primeNumbers = array(); // declare $primeNumbers as an empty array
+		private array $palindromes = array(); // declare $palindromes as an empty array
 		private string $password = ""; // declare $password as an empty string
 
 		public function __construct(int $n, int $k)
 		{
 				$this->array = range(1, $n); // declaring an $array as an array of numbers from 1 till the users input value
 				$this->setPrimeNumbers(); // calling a function that will fill up $primeNumbers array with prime numbers
+				$this->setPalindromes();  // calling a function that will fill up $palindromes array with palindromes
 				$this->setPassword($k);
 		}
 
@@ -57,12 +59,31 @@ class NumberArray
 				}
 		}
 
+		public function getPalindromes() : array // function that returns an array of palindromes
+		{
+				return $this->palindromes;
+		}
+
+		private function setPalindromes() : void // function that fills out the $palindromes array
+		{
+				foreach ($this->array as $num) // going through each value of the $array
+				{
+						$stringNum = (string)$num; // converting $num to string
+						$reversedNum = strrev($stringNum); // reversing it
+
+						if ($stringNum == $reversedNum) // if number is a palindrome, then it reversed value should be equal to the original one
+						{
+								array_push($this->palindromes, $num); // print palindrome
+						}
+				}
+		}
+
 		public function getPassword() : string // function that returns password
 		{
 				return $this->password;
 		}
 
-		private function setPassword(int $k): void // function that sets a password value
+		private function setPassword(int $k) : void // function that sets a password value
 		{
 				while (strlen($this->password) != $k) // password length should be equal to $k
 				{
@@ -76,22 +97,6 @@ class NumberArray
 						// so we get one more value, for example 3, we can add it to the password and the password will be equal to 113
 
 						$this->password = $this->password . $num; // adding value to the password
-				}
-		}
-
-		public function printPalindromes() : void // function that prints palindromes
-		{
-				echo "Palindromes: ";
-
-				foreach ($this->array as $num) // going through each value of the $array
-				{
-						$stringNum = (string)$num; // converting $num to string
-						$reversedNum = strrev($stringNum); // reversing it
-
-						if ($stringNum == $reversedNum) // if number is a palindrome, then it reversed value should be equal to the original one
-						{
-								echo $num . ' '; // print palindrome
-						}
 				}
 		}
 }
